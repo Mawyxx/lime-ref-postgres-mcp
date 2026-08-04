@@ -1,0 +1,14 @@
+{
+  "max_rows": 100,
+  "agents": {
+    "agent_abc123": {
+      "permissions": ["READ_SCHEMA", "READ_DATA"]
+    },
+    "agent_fin_5678": {
+      "permissions": ["READ_SCHEMA", "READ_DATA", "WRITE_DATA"]
+    },
+    "agent_dba_999": {
+      "permissions": ["READ_SCHEMA", "READ_DATA", "WRITE_DATA", "DDL", "ADMIN"]
+    }
+  }
+}

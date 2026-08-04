@@ -1,0 +1,42 @@
+# Package-local workflow (extract-to-own-repo ready).
+# When this directory is the git root, Actions runs this file.
+# In the LIME monorepo, nested .github may not run — local SSOT remains:
+#   uv run python -m scripts.prime_check
+# pytest-integration (inside prime_check) requires Docker on the runner.
+name: lime-ref-postgres-mcp prime_check
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: lime-ref-postgres-mcp-prime-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  prime_check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+      - name: Sync (frozen lock)
+        run: uv sync --frozen --all-extras
+      - name: AGENT-5 prime_check
+        run: uv run python -m scripts.prime_check
+      - name: Upload SBOM artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-cdx
+          path: reports/sbom.cdx.json
+          if-no-files-found: warn
