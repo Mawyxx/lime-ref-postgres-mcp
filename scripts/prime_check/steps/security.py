@@ -197,7 +197,7 @@ def sbom(ctx: RunContext) -> StepResult:
             [finding("sbom", "PRIME-A19", "uv export produced no package==version lines")],
         )
     root_name = "lime-ref-postgres-mcp"
-    root_version = "0.1.0"
+    root_version = "2.0.2"
     root_purl = f"pkg:pypi/{root_name}@{root_version}"
     document = {
         "bomFormat": "CycloneDX",

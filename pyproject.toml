@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "lime-ref-postgres-mcp"
-version = "2.0.0"
+version = "2.0.2"
 description = "LIME reference MCP door to PostgreSQL — agent passport identity first"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -12,7 +12,7 @@ license = { text = "Proprietary" }
 authors = [{ name = "LIME" }]
 dependencies = [
     "pglast>=7.0",
-    "lime-mcp-server-sdk>=1.0.3,<2",
+    "lime-mcp-server-sdk>=1.0.4,<2",
     "asyncpg>=0.31.0",
     "mcp>=2.3,<3",
     "uvicorn>=0.30",

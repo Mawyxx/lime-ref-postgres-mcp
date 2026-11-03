@@ -132,4 +132,4 @@ def test_all_layer_packages_importable() -> None:
     import lime_ref_postgres_mcp.presentation.mcp
     import lime_ref_postgres_mcp.subscribers
 
-    assert lime_ref_postgres_mcp.__version__ == "0.1.0"
+    assert lime_ref_postgres_mcp.__version__ == "2.0.2"

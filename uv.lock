@@ -702,21 +702,21 @@ wheels = [
 
 [[package]]
 name = "lime-mcp-server-sdk"
-version = "1.0.3"
+version = "1.0.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cryptography" },
     { name = "httpx" },
     { name = "pyjwt" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/7e/44/b823a46bd3ecadaf19b650b6b7d0e2345f3b89fc27083e9d366efc3a0810/lime_mcp_server_sdk-1.0.3.tar.gz", hash = "sha256:d1d157d39a9e6032303c6a6ec24ce8beddac604184e60d13824b23dc3716d1e8", size = 24094, upload-time = "2026-11-03T18:31:07.946Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/12/87/a8f3e1cc98d7b41d87a8c64bd399903634e2e687fbd3f738eddae0c6df5e/lime_mcp_server_sdk-1.0.4.tar.gz", hash = "sha256:4c5d978d4f7958a4f80dba4c13b00c05890f3a3e4bc6652af3cfc1c9184561df", size = 24407, upload-time = "2026-11-03T20:56:30.68Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ab/ba/07159dd97739b0cac3af8ac8cf433c9b893386f8c8478b735a1fed82fa27/lime_mcp_server_sdk-1.0.3-py3-none-any.whl", hash = "sha256:4c7efe8fe276a082a73d23131106422e7ba0f73516f3161a83800bab3857dcd5", size = 14498, upload-time = "2026-11-03T18:31:06.706Z" },
+    { url = "https://files.pythonhosted.org/packages/81/10/6eb8a3534cc979082256167cdad3888ede1dc7c6e2c9e0121ceea9f4c5d1/lime_mcp_server_sdk-1.0.4-py3-none-any.whl", hash = "sha256:b31ff0f11f022322574a6855351cf812ac9f407301d32c1a5d1bdcfc070e68fd", size = 14537, upload-time = "2026-11-03T20:56:29.456Z" },
 ]
 
 [[package]]
 name = "lime-ref-postgres-mcp"
-version = "2.0.0"
+version = "2.0.2"
 source = { editable = "." }
 dependencies = [
     { name = "asyncpg" },
@@ -744,7 +744,7 @@ dev = [
 requires-dist = [
     { name = "asyncpg", specifier = ">=0.31.0" },
     { name = "bandit", marker = "extra == 'dev'", specifier = ">=1.8" },
-    { name = "lime-mcp-server-sdk", specifier = ">=1.0.3,<2" },
+    { name = "lime-mcp-server-sdk", specifier = ">=1.0.4,<2" },
     { name = "mcp", specifier = ">=2.3,<3" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.14" },
     { name = "pglast", specifier = ">=7.0" },

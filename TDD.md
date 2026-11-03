@@ -1248,7 +1248,7 @@ AST payloads → `tests/unit/infrastructure/sql/test_adversarial_payloads.py`.
 | Pool | asyncpg pool size из settings (default conservative) |
 | Observability process | ADR-003: JSONL schema v1 + metrics + correlation; `/mcp` only; **не** agent audit |
 | Agent audit console | shipped `ConsoleSink` demo on EventBus only (one-way) |
-| SemVer | package 0.1.0; process log schema `v1` (bump via ADR); event schema version later if break |
+| SemVer | package 2.0.2; process log schema `v1` (bump via ADR); event schema version later if break |
 
 ---
 
