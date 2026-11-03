@@ -210,6 +210,7 @@ Copy [`.env.example`](./.env.example). Important variables:
 | `ENABLE_CONSOLE_EVENT_SINK` | no | default on — demo agent-action JSONL |
 | `LIME_MCP_LOG_*` / `LIME_MCP_METRICS` | no | process observability (ADR-003) |
 | `LIME_MCP_BIND_HOST` / `LIME_MCP_PORT` | no | `serve` bind (default `127.0.0.1:8000`) |
+| `LIME_MCP_ALLOWED_HOSTS` | no | DNS-rebinding Host allowlist (comma-separated; default bind host/loopback) |
 
 Policy shape: [`config/agents.example.json`](./config/agents.example.json).
 

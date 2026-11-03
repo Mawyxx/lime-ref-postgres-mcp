@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import dataclasses
 from unittest.mock import AsyncMock, MagicMock
 
 import pytest
@@ -98,5 +99,24 @@ async def test_build_asgi_app_dns_defaults(settings: Settings) -> None:
 async def test_build_asgi_app_disable_dns(settings: Settings) -> None:
     tr = build_test_runtime(settings)
     server, app = build_asgi_app(tr.runtime, disable_dns_rebinding=True)
+    assert server is not None
+    assert app is not None
+
+
+@pytest.mark.asyncio
+async def test_build_asgi_app_uses_allowed_hosts_env(
+    settings: Settings, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("LIME_MCP_ALLOWED_HOSTS", "mcp.example.com, localhost")
+    tr = build_test_runtime(settings)
+    server, app = build_asgi_app(tr.runtime, disable_dns_rebinding=False)
+    assert server is not None
+    assert app is not None
+
+
+@pytest.mark.asyncio
+async def test_build_asgi_app_wildcard_bind_defaults_to_loopback(settings: Settings) -> None:
+    tr = build_test_runtime(dataclasses.replace(settings, mcp_bind_host="0.0.0.0"))
+    server, app = build_asgi_app(tr.runtime, disable_dns_rebinding=False)
     assert server is not None
     assert app is not None

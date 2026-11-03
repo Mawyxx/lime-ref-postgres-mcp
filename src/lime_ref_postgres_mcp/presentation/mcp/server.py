@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 from collections.abc import AsyncIterator, Awaitable, Callable, Mapping
 from contextlib import asynccontextmanager
 from typing import Any
@@ -197,9 +198,22 @@ def build_asgi_app(
 ) -> tuple[Server[dict[str, Any]], Starlette]:
     """Build Server + Streamable HTTP Starlette app mounted at ``/mcp`` only."""
     server = build_mcp_server(runtime)
-    security: TransportSecuritySettings | None = None
     if disable_dns_rebinding:
         security = TransportSecuritySettings(enable_dns_rebinding_protection=False)
+    else:
+        configured = os.environ.get("LIME_MCP_ALLOWED_HOSTS", "")
+        allowed_hosts = [host.strip() for host in configured.split(",") if host.strip()]
+        if not allowed_hosts:
+            bind_host = runtime.settings.mcp_bind_host
+            allowed_hosts = (
+                [bind_host]
+                if bind_host not in {"0.0.0.0", "::"}
+                else ["127.0.0.1", "localhost", "[::1]"]
+            )
+        security = TransportSecuritySettings(
+            enable_dns_rebinding_protection=True,
+            allowed_hosts=allowed_hosts,
+        )
     app = server.streamable_http_app(
         streamable_http_path=MCP_HTTP_PATH,
         json_response=json_response,
