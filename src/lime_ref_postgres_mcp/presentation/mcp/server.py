@@ -207,7 +207,7 @@ def build_asgi_app(
             bind_host = runtime.settings.mcp_bind_host
             allowed_hosts = (
                 [bind_host]
-                if bind_host not in {"0.0.0.0", "::"}
+                if bind_host not in {"0.0.0.0", "::"}  # nosec B104 - comparison, not a bind call
                 else ["127.0.0.1", "localhost", "[::1]"]
             )
         security = TransportSecuritySettings(
