@@ -88,7 +88,7 @@ Process logs (`lime.mcp.process_log.v1`) always can record preauth failures and 
 **Requirements:** Python ≥ 3.12, [uv](https://github.com/astral-sh/uv). Docker only for integration tests.
 
 ```bash
-cd Marketing/lime-postgres-mcp   # or clone this package as its own repo
+cd lime-ref-postgres-mcp   # or clone this package as its own repo
 uv sync --all-extras
 cp .env.example .env            # fill LIME_* and POSTGRES_URL
 # create config/agents.json from config/agents.example.json

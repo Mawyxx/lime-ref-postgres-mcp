@@ -1,4 +1,7 @@
-"""Optional event subscribers. Shipped: ConsoleSink (event-system demo). Custom sinks via bus.subscribe."""
+"""Optional event subscribers.
+
+Shipped: ConsoleSink (event-system demo). Custom sinks via bus.subscribe.
+"""
 
 from __future__ import annotations
 
